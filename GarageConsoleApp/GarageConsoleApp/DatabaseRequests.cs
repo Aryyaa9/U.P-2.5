@@ -10,7 +10,6 @@ public static class DatabaseRequests
     /// <summary>
     /// Метод GetTypeCarQuery
     /// отправляет запрос в БД на получение списка типов машин
-    /// выводит в консоль список типов машин
     /// </summary>
     public static void GetTypeCarQuery()
     {
@@ -45,7 +44,6 @@ public static class DatabaseRequests
     /// <summary>
     /// Метод GetDriverQuery
     /// отправляет запрос в БД на получение списка водителей
-    /// выводит в консоль данные о водителях
     /// </summary>
     public static void GetDriverQuery()
     {
@@ -75,7 +73,6 @@ public static class DatabaseRequests
         /// <summary>
     /// Метод GetDriverRightsCategoryQuery
     /// отправляет запрос в БД на получение категорий водителей
-    /// выводит в консоль информацию о категориях прав водителей
     /// </summary>
     public static void GetDriverRightsCategoryQuery(int driver)
     {
@@ -109,7 +106,6 @@ public static class DatabaseRequests
     /// <summary>
     /// Метод GetCarQuery
     /// отправляет запрос в БД на получение списка машин
-    /// выводит в консоль список машин
     /// </summary>
     public static void GetCarQuery()
     {
@@ -144,7 +140,6 @@ public static class DatabaseRequests
     /// <summary>
     /// Метод GetItineraryQuery
     /// отправляет запрос в БД на получение списка маршрутов
-    /// выводит в консоль список маршрутов
     /// </summary>
     public static void GetItineraryQuery()
     {
@@ -179,7 +174,6 @@ public static class DatabaseRequests
     /// <summary>
     /// Метод GetRouteQuery
     /// отправляет запрос в БД на получение списка рейсов
-    /// выводит в консоль список рейсов
     /// </summary>
     public static void GetRouteQuery()
     {
