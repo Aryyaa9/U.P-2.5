@@ -40,17 +40,8 @@ public static class DatabaseRequests
         cmd.ExecuteNonQuery();
     }
 
-    /// <summary>
-    /// Метод AddDriverQuery
-    /// отправляет запрос в БД на добавление водителей
-    /// </summary>
-    public static void AddDriverQuery(string firstName, string lastName, DateTime birthdate)
-    {
-        var querySql = $"INSERT INTO driver(first_name, last_name, birthdate) VALUES ('{firstName}', '{lastName}', '{birthdate}')";
-        using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
-        cmd.ExecuteNonQuery();
-    }
 
+    
     /// <summary>
     /// Метод GetDriverQuery
     /// отправляет запрос в БД на получение списка водителей
@@ -69,28 +60,19 @@ public static class DatabaseRequests
     }
 
     /// <summary>
-    /// Метод AddRightsCategoryQuery
-    /// отправляет запрос в БД на добавление категорий прав
+    /// Метод AddDriverQuery
+    /// отправляет запрос в БД на добавление водителей
     /// </summary>
-    public static void AddRightsCategoryQuery(string name)
+    public static void AddDriverQuery(string firstName, string lastName, DateTime birthdate)
     {
-        var querySql = $"INSERT INTO rights_category(name) VALUES ('{name}')";
+        var querySql = $"INSERT INTO driver(first_name, last_name, birthdate) VALUES ('{firstName}', '{lastName}', '{birthdate}')";
         using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
         cmd.ExecuteNonQuery();
     }
 
-    /// <summary>
-    /// Метод AddDriverRightsCategoryQuery
-    /// отправляет запрос в БД на добавление категории прав водителю
-    /// </summary>
-    public static void AddDriverRightsCategoryQuery(int driver, int rightsCategory)
-    {
-        var querySql = $"INSERT INTO driver_rights_category(id_driver, id_rights_category) VALUES ({driver}, {rightsCategory})";
-        using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
-        cmd.ExecuteNonQuery();
-    }
 
-    /// <summary>
+
+        /// <summary>
     /// Метод GetDriverRightsCategoryQuery
     /// отправляет запрос в БД на получение категорий водителей
     /// выводит в консоль информацию о категориях прав водителей
@@ -110,16 +92,28 @@ public static class DatabaseRequests
             Console.WriteLine($"Имя: {reader[0]} Фамилия: {reader[1]} Категория прав: {reader[2]}");
         }
     }
-    
+
+    /// <summary>
+    /// Метод AddDriverRightsCategoryQuery
+    /// отправляет запрос в БД на добавление категории прав водителю
+    /// </summary>
+    public static void AddDriverRightsCategoryQuery(int driver, int rightsCategory)
+    {
+        var querySql = $"INSERT INTO driver_rights_category(id_driver, id_rights_category) VALUES ({driver}, {rightsCategory})";
+        using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
+        cmd.ExecuteNonQuery();
+    }
+
+
     
     /// <summary>
     /// Метод GetCarQuery
     /// отправляет запрос в БД на получение списка машин
-    /// выводит в консоль список типов машин
+    /// выводит в консоль список машин
     /// </summary>
     public static void GetCarQuery()
     {
-        // Сохраняем в переменную запрос на получение всех данных и таблицы car
+        // Сохраняем в переменную запрос на получение всех данных из таблицы car
         var querySql = "SELECT * FROM car";
         // Создаем команду(запрос) cmd, передаем в нее запрос и соединение к БД
         using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
@@ -144,6 +138,8 @@ public static class DatabaseRequests
         using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
         cmd.ExecuteNonQuery();
     }
+
+
     
     /// <summary>
     /// Метод GetItineraryQuery
@@ -152,7 +148,7 @@ public static class DatabaseRequests
     /// </summary>
     public static void GetItineraryQuery()
     {
-        // Сохраняем в переменную запрос на получение всех данных и таблицы itinerary
+        // Сохраняем в переменную запрос на получение всех данных из таблицы itinerary
         var querySql = "SELECT * FROM itinerary";
         // Создаем команду(запрос) cmd, передаем в нее запрос и соединение к БД
         using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
@@ -177,6 +173,8 @@ public static class DatabaseRequests
         using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
         cmd.ExecuteNonQuery();
     }
+
+
     
     /// <summary>
     /// Метод GetRouteQuery
@@ -206,7 +204,7 @@ public static class DatabaseRequests
     /// </summary>
     public static void AddRouteQuery(int idDriver,  int idCar, int idItinerary, int numberPassengers)
     {
-        var querySql = $"INSERT INTO route(id_driver, id_car, id_itinerary, number_passengers) VALUES ({idDriver}, '{idCar}', '{idItinerary}', {numberPassengers})";
+        var querySql = $"INSERT INTO route(id_driver, id_car, id_itinerary, number_passengers) VALUES ({idDriver}, {idCar}, {idItinerary}, {numberPassengers})";
         using var cmd = new NpgsqlCommand(querySql, DatabaseService.GetSqlConnection());
         cmd.ExecuteNonQuery();
     }
