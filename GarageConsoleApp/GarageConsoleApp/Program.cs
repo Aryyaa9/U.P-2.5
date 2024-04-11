@@ -9,6 +9,15 @@ public class Program
 {
     public static void Main(string[] args)
     {
+         // Вызовем метод для получения данных о типах автомобилей
+        DatabaseRequests.GetTypeCarQuery();
+        Console.WriteLine();
+        // Добавим новый тип автомобиля в БД
+        DatabaseRequests.AddTypeCarQuery("Воздушный");
+        // Вызовем метод для получения данных о типах автомобилей
+        DatabaseRequests.GetTypeCarQuery();
+
+
         // Вызовем метод для получения данных о водителях
         DatabaseRequests.GetDriverQuery();
         Console.WriteLine();
@@ -16,17 +25,17 @@ public class Program
         DatabaseRequests.AddDriverQuery("Денис", "Иванов", DateTime.Parse("1997.01.12"));
         // Вызовем метод для получения данных о водителях
         DatabaseRequests.GetDriverQuery();
-        
-        
-        // Вызовем метод для получения данных о типах автомобилей
-        DatabaseRequests.GetTypeCarQuery();
+
+
+         // Вызовем метод для получения категорий водителей
+        DatabaseRequests.GetDriverRightsCategoryQuery(1);
         Console.WriteLine();
-        // Добавим новый тип автомобиля в БД
-        DatabaseRequests.AddTypeCarQuery("Воздушный");
-        // Вызовем метод для получения данных о типах автомобилей
-        DatabaseRequests.GetTypeCarQuery();
+        // Добавим новую категорию прав
+        DatabaseRequests.AddDriverRightsCategoryQuery(1, 3);
+        DatabaseRequests.GetDriverRightsCategoryQuery(1);
         
-        
+
+    
         // Вызовем метод для получения данных о машинах 
         DatabaseRequests.GetCarQuery();
         Console.WriteLine();
